@@ -5,8 +5,13 @@ var Main = (props) => {
   return (
     <div>
       <Nav></Nav>
-      <p>Main.jsx rendered</p>
-      {props.children}
+      <div className="row">
+        <div className="column small-centerd medium-6 large-4">
+          {props.children}
+          
+        </div>
+
+      </div>
     </div>
   );
 }
