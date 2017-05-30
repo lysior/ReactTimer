@@ -29,6 +29,28 @@ describe('Countdown', () => {
       setTimeout( () => {
         expect(countdownObj.state.count).toBe(0);
       },3001);
-    })
+    });
+    it('should stay at  certain count,when paused', (done) => {
+      var countdownObj = TestUtils.renderIntoDocument(<Countdown/>);
+      countdownObj.handleSetCountdwon(3);
+      countdownObj.handleStatusChange('paused');
+
+      setTimeout(()=> {
+        expect(countdownObj.state.count).toBe(3);
+        expect(countdownObj.state.countdownStatus).toBe('paused');
+        done();
+      },1001)
+    });
+    it('should set count to 0 on stopped and status to stopped', (done) => {
+      var countdownObj = TestUtils.renderIntoDocument(<Countdown/>);
+      countdownObj.handleSetCountdwon(3);
+      countdownObj.handleStatusChange('stopped');
+
+      setTimeout(()=> {
+        expect(countdownObj.state.count).toBe(0);
+        expect(countdownObj.state.countdownStatus).toBe('stopped');
+        done();
+      },1001)
+    });
   })
 })
