@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   entry: [
@@ -29,7 +30,8 @@ module.exports = {
       Controls: 'app/components/Controls.jsx',
       CountdownForm: 'app/components/CountdownForm.jsx',
       Nav: 'app/components/Nav.jsx',
-      applicationStyles: 'app/styles/app.scss'
+      applicationStyles: 'app/styles/app.scss',
+      util: 'node_modules/foundation-sites/scss/util'
     },
     extensions: ['','.js','.jsx']
   },
@@ -43,6 +45,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
       }
+    ]
+  },
+  sassLoader: {
+    includePaths: [
+      path.resolve(__dirname, './node_modules/foundation-sites/scss')
     ]
   },
   devtool: 'cheap-module-eval-source-map'
